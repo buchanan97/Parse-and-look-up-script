@@ -1,60 +1,68 @@
-# Parse-and-look-up-script
-Spreadsheet Identity & AD Lookup Tools
-This repository contains two Python-based automation scripts for parsing .xlsx and .csv files. These tools are designed to streamline the process of checking local flat-file exports (such as Active Directory or EntraID reports) for specific user details.
+📊 User Lookup & Identity Automation
+Efficiently parse Active Directory and Entra ID flat files without ever opening Excel.
 
-Features
-Local Execution: Runs entirely on your Windows machine.
+⚡ Why Use This?
+Manually searching through massive .csv or .xlsx exports from Active Directory or Entra ID is slow, error‑prone, and often causes the dreaded Excel lag.
+These Python utilities provide a lightweight, command‑line interface to instantly locate:
 
-Format Support: Handles both Excel (.xlsx) and Comma-Separated Values (.csv) formats.
+User identities
 
-Efficiency: Eliminates the need to open heavy Excel files to find a single user.
+IAM roles
 
-Automation: Uses pandas for high-speed data parsing and filtering.
+RBAC information
 
-The Scripts
-1. Specific Spreadsheet Inspector (parse_query_for_my_own_spreadsheet.py)
-This script is a tailored example of how to interact with a known data structure. It is optimized for a specific employee directory format.
+All in milliseconds, using pure Python.
 
-Best Use Case: When you have a standard internal directory and need to pull specific fields (User ID, Job Title, RBAC/IAM info) for a person.
+🛠️ Installation & Setup
+Clone the repository or download the scripts.
 
-How it works: * It validates the file path.
+Install dependencies:
 
-It specifically looks for a Full Name column.
-
-It returns a formatted view of that user's specific identity and role attributes.
-
-2. Universal AD/EntraID Parser (parse_query_for_all_spreadsheets_locally_AD.py)
-A more robust and flexible tool designed for general administrative use. It is "column-agnostic," meaning it can search for a user even if you don't know exactly which column their name is in.
-
-Best Use Case: Verifying if a user exists in an Active Directory export or EntraID flat-file where column names might vary.
-
-How it works:
-
-It scans the entire spreadsheet for all "text" based columns.
-
-It performs a case-insensitive search across every column simultaneously.
-
-If a match is found anywhere in the row, it displays the full record for that user.
-
-Prerequisites
-To run these scripts, you must have Python installed along with the pandas and openpyxl libraries.
-
-Bash
+bash
 pip install pandas openpyxl
-Usage
-Launch the script:
+🚀 The Toolkit
+🔍 1. Universal AD Parser
+Filename: parse_query_for_all_spreadsheets_locally_AD.py
 
-Bash
-python parse_query_for_all_spreadsheets_locally_AD.py
-Enter File Path: When prompted, paste the full path to your .csv or .xlsx file. (Note: The scripts are designed to handle Windows backslashes \ automatically).
+Your Swiss Army Knife for identity lookups.
+It doesn’t care how your spreadsheet is structured — it will find the user wherever they’re hiding.
 
-Search: Enter the full name of the individual you are looking for.
+Logic: Scans every text column for a match
 
-View Results: The script will output the user's details directly in the terminal or notify you if no match was found.
+Best for: Unknown or inconsistent column headers (Name, FullName, DisplayName, etc.)
 
-Technical Details
-Error Handling: Both scripts include try-except blocks to prevent crashes if a file is locked or the path is typed incorrectly.
+Feature: Automatically converts Windows file paths for Python compatibility
 
-Recursion & Loops: The scripts use while loops to ensure the user can retry a file path without the script ending.
+📋 2. Directory Inspector (Template)
+Filename: parse_query_for_my_own_spreadsheet.py
 
-Memory Efficiency: By using pandas, the scripts can search through thousands of rows in milliseconds, significantly faster than manual filtering in Excel.
+A specialized script designed for a consistent, predictable export format.
+
+Logic: Targets a specific Full Name column
+
+Best for: Recurring tasks with the same spreadsheet layout
+
+Output: Structured data including
+
+User ID
+
+Job Title
+
+RBAC / IAM Information
+
+📖 Usage Guide
+Running the tools is simple — just follow the interactive prompts.
+
+Step	Action	Description
+1	python script_name.py	Launch the desired tool
+2	Provide Path	Paste the full path to your .xlsx or .csv file
+3	Search Name	Enter the full name (case‑insensitive)
+4	Review	View the matched row directly in your console
+🛡️ Technical Overview
+Data Engine: Powered by pandas for fast, efficient filtering
+
+Path Handling: Automatically converts \ → / to avoid Windows path issues
+
+Safety: Built‑in exception handling prevents crashes on invalid or locked files
+
+Note: These scripts run locally only. No data is uploaded or transmitted. All parsing happens on your machine.
