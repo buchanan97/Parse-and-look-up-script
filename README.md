@@ -1,68 +1,37 @@
-📊 User Lookup & Identity Automation
-Efficiently parse Active Directory and Entra ID flat files without ever opening Excel.
+# **📊 User Lookup & Identity Automation**
 
-⚡ Why Use This?
-Manually searching through massive .csv or .xlsx exports from Active Directory or Entra ID is slow, error‑prone, and often causes the dreaded Excel lag.
-These Python utilities provide a lightweight, command‑line interface to instantly locate:
+This repository contains Python utilities designed to efficiently parse Active Directory (AD) and Entra ID flat files. These scripts allow you to instantly locate user identities, IAM roles, and RBAC information without the manual effort of opening massive `.csv` or `.xlsx` exports in Excel.
 
-User identities
+---
 
-IAM roles
+## **⚡ Why Use This?**
 
-RBAC information
+* **Speed:** Locate users in milliseconds using pure Python.
+* **Efficiency:** Avoid the "Excel lag" associated with massive identity exports.
+* **Flexibility:** Search across all columns or target specific data structures.
+* **Local & Secure:** All parsing happens on your machine; no data is uploaded or transmitted.
 
-All in milliseconds, using pure Python.
+---
 
-🛠️ Installation & Setup
-Clone the repository or download the scripts.
+## **📁 Repository Structure**
 
-Install dependencies:
+| File | Description |
+| :--- | :--- |
+| `parse_query_for_all_spreadsheets_locally_AD.py` | **Universal AD Parser:** Scans every text column for a match. Ideal for inconsistent headers like Name or DisplayName. |
+| `parse_query_for_my_own_spreadsheet.py` | **Directory Inspector:** Targeted lookup for consistent layouts. Extracts specific fields like User ID, Job Title, and RBAC info. |
 
-bash
-pip install pandas openpyxl
-🚀 The Toolkit
-🔍 1. Universal AD Parser
-Filename: parse_query_for_all_spreadsheets_locally_AD.py
+---
 
-Your Swiss Army Knife for identity lookups.
-It doesn’t care how your spreadsheet is structured — it will find the user wherever they’re hiding.
+## **🧩 Requirements**
 
-Logic: Scans every text column for a match
+* **Python 3.8+**
+* **Pandas:** `pip install pandas`
+* **Openpyxl:** `pip install openpyxl`
 
-Best for: Unknown or inconsistent column headers (Name, FullName, DisplayName, etc.)
+---
 
-Feature: Automatically converts Windows file paths for Python compatibility
+## **🚀 Usage**
 
-📋 2. Directory Inspector (Template)
-Filename: parse_query_for_my_own_spreadsheet.py
-
-A specialized script designed for a consistent, predictable export format.
-
-Logic: Targets a specific Full Name column
-
-Best for: Recurring tasks with the same spreadsheet layout
-
-Output: Structured data including
-
-User ID
-
-Job Title
-
-RBAC / IAM Information
-
-📖 Usage Guide
-Running the tools is simple — just follow the interactive prompts.
-
-Step	Action	Description
-1	python script_name.py	Launch the desired tool
-2	Provide Path	Paste the full path to your .xlsx or .csv file
-3	Search Name	Enter the full name (case‑insensitive)
-4	Review	View the matched row directly in your console
-🛡️ Technical Overview
-Data Engine: Powered by pandas for fast, efficient filtering
-
-Path Handling: Automatically converts \ → / to avoid Windows path issues
-
-Safety: Built‑in exception handling prevents crashes on invalid or locked files
-
-Note: These scripts run locally only. No data is uploaded or transmitted. All parsing happens on your machine.
+### **1. Run a Lookup Script**
+```bash
+python parse_query_for_all_spreadsheets_locally_AD.py
