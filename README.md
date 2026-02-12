@@ -35,3 +35,15 @@ This repository contains Python utilities designed to efficiently parse Active D
 ### **1. Run a Lookup Script**
 ```bash
 python parse_query_for_all_spreadsheets_locally_AD.py
+
+Enter the path of the .xlsx or .csv file: C:\Exports\ActiveDirectory_Dump.xlsx
+File loaded successfully.
+
+Searching in text columns: ['Full Name', 'Display Name', 'Email', 'Job Title']
+Enter the full name to search for: Alice Vance
+
+User details found:
+
+User ID    Full Name     Job Title    RBAC / IAM Information
+AV101      Alice Vance   Analyst      Admin_Full_Access
+
